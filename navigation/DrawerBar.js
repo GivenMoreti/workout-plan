@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react';
+import React, { useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // will later decide if they should be handled as components instead
 import CommunityScreen from '../screens/DrawerScreens/CommunityScreen';
@@ -15,14 +15,24 @@ import StackNav from './StackNav';
 const Drawer = createDrawerNavigator();
 
 const DrawerBar = () => {
+  const [isLogin, setIsLogin] = useState(false);
   return (
 
     <Drawer.Navigator
+    initialRouteName='Home'
+    screenOptions={{
+      swipeEnabled:true,
+      gestureEnabled:true,
+      headerTitleAlign:"center",
+      headerStyle:{
+        backgroundColor:"skyblue"
+      }
+    }}
     >
-      <Drawer.Screen name="Home" component={StackNav} options={{
-        headerShown: false,
+      <Drawer.Screen name="Home is where the ❤️ is" component={StackNav} options={{
+        headerShown: true,
       }} />
-      <Drawer.Screen name="Login" component={LoginRegScreen} options={{
+      <Drawer.Screen name={isLogin ? "Login" : "Logout"} component={LoginRegScreen} options={{
         headerShown: false,
       }} />
 
