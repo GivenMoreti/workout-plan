@@ -3,7 +3,6 @@ import React from "react";
 
 
 
-
 import { FontAwesome } from '@expo/vector-icons';
 import Item from "../components/Item";
 import HeaderBar from "../components/HeaderBar";
@@ -55,6 +54,9 @@ const HomeScreen = ({navigation}) => {
           <Text style={styles.message}>Consistency is key</Text>
         </View>
         <FlatList
+       
+
+
           data={data}
           horizontal
           keyExtractor={data.key}
