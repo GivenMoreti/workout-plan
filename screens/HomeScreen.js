@@ -1,62 +1,59 @@
 import { FlatList, Image, StyleSheet, Text, View,TouchableOpacity } from "react-native";
 import React from "react";
-import { SimpleLineIcons } from "@expo/vector-icons";
-import { Foundation } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+
+
+
 
 import { FontAwesome } from '@expo/vector-icons';
 import Item from "../components/Item";
+import HeaderBar from "../components/HeaderBar";
+
+
+
 const HomeScreen = ({navigation}) => {
   const data = [
     {
       id: 1,
       title: "Jog",
       img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      details:"Jog details",
     },
     {
       id: 2,
       title: "Hip",
       img: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D",
+      details:"HIp details",
     },
     {
       id: 3,
       title: "Bench press",
       img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
+      details:"bench press details",
     },
   ];
 
-  const onPressItem = (itemId, itemName,itemImg) => {
-    navigation.navigate('Plans', { itemId, itemName,itemImg });
+  // navigate on item
+  const onPressItem = (itemId, itemName,itemImg,itemDetails) => {
+    navigation.navigate('Plans', { itemId, itemName,itemImg,itemDetails });
   };
 
 
   return (
     <View style={styles.container}>
       <View style={styles.container2}>
-        <View style={styles.container5}>
-          <Foundation name="calendar" size={40} color="white" />
-          <Text style={styles.details}>Details</Text>
-          <Feather name="arrow-right" size={40} color="white" />
-        </View>
-        <View>
-          <Text style={styles.nextWorkout}>Next workout</Text>
-        </View>
-
-        <View style={styles.container3}>
-          <SimpleLineIcons name="clock" size={40} color="white" />
-          <Text>60 min</Text>
-        </View>
+        <HeaderBar/>
       </View>
-      <View style={styles.doingWell}>
-        <Text style={styles.message}>You are doing well</Text>
-        <FontAwesome name="flag-checkered" size={30} color="#40A2E3" />
-      </View>
+     
       {/* start of component item */}
       <View
         style={styles.container4}
         showsHorizontalScrollIndicator={false}
         horizontal
       >
+        {/* internal text */}
+        <View >
+          <Text style={styles.message}>Consistency is key</Text>
+        </View>
         <FlatList
           data={data}
           horizontal
@@ -64,7 +61,7 @@ const HomeScreen = ({navigation}) => {
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
   
-            <Item image = {item.img}  title = {item.title} onPress = {()=>onPressItem(item.id,item.title,item.img)}/>
+            <Item image = {item.img}  title = {item.title} onPress = {()=>onPressItem(item.id,item.title,item.img,item.details)}/>
             
           )}
         />
@@ -77,60 +74,45 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
  
+  container: {
+    flex: 1,
+    padding: 5,
+    backgroundColor: "#fff",
+    marginBottom:4,
+  },
+
+  container2:{
+    flex:0.2,
+  },
+  container4: {
+    borderRadius: 10,
+    marginTop: 0,
+    flex: 0.5,
+    padding: 2,
+    width: "100%",
+    borderWidth:1,
+
+  },
   item: {
     margin: 5,
   },
   doingWell: {
+    flex:0.2,
     flexDirection: "row",
-    gap: 10,
-    alignItems: "center",
+    textAlign: "center",
+    borderWidth:1,
+    marginTop:1,
   },
   message: {
-    fontSize: 30,
-    color: "#40A2E3",
+    fontSize: 20,
     textAlign: "center",
+    padding:10,
+    margin:5,
+    fontWeight:"900",
+    fontStyle:"normal",
+    color:"gray",
 
   },
-  container: {
-    flex: 3,
-    padding: 10,
-    backgroundColor: "#fff",
-  },
-  container2: {
-    flex: 1,
-    padding: 10,
-    width: "100%",
-    height: 100,
-    backgroundColor: "#40A2E3",
-    borderRadius: 10,
-    shadowColor: "blue",
-    justifyContent: "space-between",
-  },
-  nextWorkout: {
-    fontSize: 30,
-    fontWeight: "700",
-    color: "#fff",
-  },
-  container3: {
-    alignItems: "center",
-    flexDirection: "row",
-    gap: 20,
-  },
-  container4: {
-    borderRadius: 10,
-    marginTop: 10,
-    flex: 1,
-    padding: 10,
-    width: "100%",
-    height: 200,
-    // backgroundColor: "gray",
-  },
-  container5: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  details: {
-    fontSize: 20,
-    color: "white",
-  },
+  
+ 
 });
