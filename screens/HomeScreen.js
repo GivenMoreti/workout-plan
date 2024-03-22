@@ -1,11 +1,12 @@
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, View,TouchableOpacity } from "react-native";
 import React from "react";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
 import { FontAwesome } from '@expo/vector-icons';
-const HomeScreen = () => {
+import Item from "../components/Item";
+const HomeScreen = ({navigation}) => {
   const data = [
     {
       id: 1,
@@ -23,6 +24,11 @@ const HomeScreen = () => {
       img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
     },
   ];
+
+  const onPressItem = (itemId, itemName,itemImg) => {
+    navigation.navigate('Plans', { itemId, itemName,itemImg });
+  };
+
 
   return (
     <View style={styles.container}>
@@ -45,6 +51,7 @@ const HomeScreen = () => {
         <Text style={styles.message}>You are doing well</Text>
         <FontAwesome name="flag-checkered" size={30} color="#40A2E3" />
       </View>
+      {/* start of component item */}
       <View
         style={styles.container4}
         showsHorizontalScrollIndicator={false}
@@ -56,13 +63,9 @@ const HomeScreen = () => {
           keyExtractor={data.key}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
-            <View style={styles.item}>
-              <Image
-                source={{ uri: item.img }}
-                style={{ width: 200, height: 200 }}
-              />
-              <Text style={styles.title}>{item.title}</Text>
-            </View>
+  
+            <Item image = {item.img}  title = {item.title} onPress = {()=>onPressItem(item.id,item.title,item.img)}/>
+            
           )}
         />
       </View>
@@ -73,11 +76,7 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  title: {
-    textAlign: "center",
-    fontSize: 15,
-    color: "#40A2E3",
-  },
+ 
   item: {
     margin: 5,
   },
