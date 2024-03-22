@@ -15,19 +15,19 @@ const HomeScreen = ({navigation}) => {
       id: 1,
       title: "Jog",
       img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      details:"Jog details",
+      details:"The hip exercise primarily targets the hip abductor and adductor muscles, as well as the glutes and hamstrings. It involves controlled movements to engage these muscles effectively. This exercise can be performed in various ways, including standing, lying down, or using equipment such as resistance bands or weights.",
     },
     {
       id: 2,
       title: "Hip",
       img: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D",
-      details:"HIp details",
+      details:"The hip exercise primarily targets the hip abductor and adductor muscles, as well as the glutes and hamstrings. It involves controlled movements to engage these muscles effectively. This exercise can be performed in various ways, including standing, lying down, or using equipment such as resistance bands or weights.",
     },
     {
       id: 3,
       title: "Bench press",
       img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
-      details:"bench press details",
+      details:"The hip exercise primarily targets the hip abductor and adductor muscles, as well as the glutes and hamstrings. It involves controlled movements to engage these muscles effectively. This exercise can be performed in various ways, including standing, lying down, or using equipment such as resistance bands or weights.",
     },
   ];
 
